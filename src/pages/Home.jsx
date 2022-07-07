@@ -1,4 +1,5 @@
 import React from 'react';
+import { SearchContext } from '../App';
 
 import Categories from '../components/Categories';
 import Pagination from '../components/Pagination/Pagination';
@@ -6,7 +7,7 @@ import PizzaBlock from '../components/PizzaBlock/PizzaBlock';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import Sort from '../components/Sort';
 
-export default function Home({ searchValue }) {
+export default function Home() {
   const [pizzas, setPizzas] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [categoryId, setCategoryId] = React.useState(0);
@@ -15,6 +16,7 @@ export default function Home({ searchValue }) {
     name: 'популярности',
     sortProperty: 'rating',
   });
+  const { searchValue } = React.useContext(SearchContext)
 
   const onChangePage = (page) => {
     setCurrentPage(page);
